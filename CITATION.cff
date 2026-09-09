@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "FAIL — A Computational Audit of Randomized Two-Bin Stretching"
+message: "If you use this negative-result audit or its reproduction script, please cite this repository."
+type: software
+authors:
+  - family-names: Yonezu
+    given-names: Ryutaro
+version: 1.0.0
+date-released: 2026-09-09
+repository-code: "https://github.com/yonezaemon1-hub/randomized-bin-stretching-failed-transfer-audit"
+abstract: >-
+  Negative-result and soundness-audit package for a failed transfer in randomized online two-bin stretching. The package exactly reproduces the classic 7/6 Yao support and gives an exact offline-feasible diagnostic showing that a naive joint-state pruning/lifting rule does not certify the apparent 57/46 candidate. No new competitive-ratio bound is claimed.
+keywords:
+  - online bin stretching
+  - randomized algorithms
+  - negative result
+  - soundness audit
+  - exact arithmetic
+  - reproducibility
+license: MIT
