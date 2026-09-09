@@ -1,0 +1,23 @@
+{
+  "title": "FAIL — A Computational Audit of Randomized Two-Bin Stretching",
+  "upload_type": "software",
+  "description": "Negative-result and soundness-audit package for a failed transfer in randomized online two-bin stretching. The package exactly reproduces the classic 7/6 Yao support and gives an exact offline-feasible diagnostic showing that a naive joint-state pruning/lifting rule does not certify the apparent 57/46 candidate. This record explicitly claims no new competitive-ratio bound.",
+  "creators": [
+    {
+      "name": "Yonezu, Ryutaro",
+      "affiliation": "Independent Researcher"
+    }
+  ],
+  "version": "1.0.0",
+  "publication_date": "2026-09-09",
+  "license": "MIT",
+  "keywords": [
+    "online bin stretching",
+    "randomized algorithms",
+    "negative result",
+    "soundness audit",
+    "exact arithmetic",
+    "reproducibility"
+  ],
+  "notes": "FROZEN NEGATIVE RESULT. NO_NEW_BOUND_CLAIMED. The counterexample targets only the audited naive joint-state pruning/lifting rule and is not a counterexample to the published randomized two-bin method."
+}
