@@ -1,0 +1,56 @@
+name: Freeze negative result release
+
+on:
+  push:
+    paths:
+      - .github/workflows/freeze-negative-result-release.yml
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create frozen v1.0.0 release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          TARGET_SHA: be65fbe0e405fa06879c7061564c29de8412aeef
+        run: |
+          cat > release-notes.md <<'EOF'
+          # Frozen Negative Result
+
+          This release freezes a negative-result / research-audit artifact for randomized two-bin stretching.
+
+          Status: **FROZEN NEGATIVE RESULT / NO NEW BOUND CLAIMED**
+
+          The repository reproduces the classic `7/6` Yao lower-bound support and records why a naive joint-state pruning/lifting transfer does **not** certify the candidate value `57/46`.
+
+          The exact diagnostic counterexample and reproduction code are included in the tagged repository state.
+
+          Critical scope boundary: this is a counterexample to the audited naive transfer rule, not to the published randomized two-bin method and not to the open problem itself.
+
+          Final verdict:
+
+          ```text
+          RESULT_E1 = PASS_REPRODUCED_7_6
+          RESULT_E2 = PASS_NAIVE_LIFT_DIAGNOSTIC_FAILS_TARGET
+          FINAL = NO_NEW_BOUND_CLAIMED
+          ```
+
+          This line remains frozen unless a new sound transfer principle, pruning invariant, or independently verified certificate is obtained.
+          EOF
+
+          if gh release view v1.0.0 --repo "$REPO" >/dev/null 2>&1; then
+            echo "Release v1.0.0 already exists; refusing to overwrite."
+            gh release view v1.0.0 --repo "$REPO"
+            exit 0
+          fi
+
+          gh release create v1.0.0 \
+            --repo "$REPO" \
+            --target "$TARGET_SHA" \
+            --title "v1.0.0 — Frozen Negative Result" \
+            --notes-file release-notes.md \
+            --latest
