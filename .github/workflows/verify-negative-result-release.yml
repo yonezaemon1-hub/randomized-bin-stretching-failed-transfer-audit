@@ -1,0 +1,25 @@
+name: Verify negative result release
+
+on:
+  push:
+    paths:
+      - .github/workflows/verify-negative-result-release.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify release and target
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          TARGET_SHA: be65fbe0e405fa06879c7061564c29de8412aeef
+        run: |
+          set -euo pipefail
+          gh release view v1.0.0 --repo "$REPO" --json tagName,name,isDraft,isPrerelease,targetCommitish,url
+          TAG_SHA="$(gh api repos/$REPO/git/ref/tags/v1.0.0 --jq .object.sha)"
+          echo "tag_sha=$TAG_SHA"
+          test "$TAG_SHA" = "$TARGET_SHA"
