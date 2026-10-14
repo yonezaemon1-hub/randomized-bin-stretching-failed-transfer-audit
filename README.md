@@ -91,3 +91,7 @@ The research line is frozen unless a new sound transfer principle, pruning invar
 ## Research-integrity policy
 
 Failed computations are retained when they materially constrain future work. A numerically attractive candidate is not treated as a result unless its transfer, pruning, and certification steps are sound.
+
+## Research inquiries
+
+For questions about this research, reproduction, or collaboration, contact Yonezu Research Lab: [yonezaemon1+research@gmail.com](mailto:yonezaemon1+research@gmail.com).
